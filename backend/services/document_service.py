@@ -1,0 +1,17 @@
+from config import db
+from models.document import Document
+
+class DocumentService:
+    @staticmethod
+    def post_document(command):
+        document = Document(
+            numero=command.numero,
+            date=command.date,
+            total=command.total,
+            type_document=command.type_document,
+            client_id=command.client_id,
+            profile_id=command.profile_id
+        )
+        db.session.add(document)
+        db.session.commit()
+        return document

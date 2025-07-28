@@ -1,5 +1,4 @@
-# In your controllers/document_controller.py or similar file
-from flask import Blueprint, jsonify, request # Make sure to import request as well
+from flask import Blueprint, jsonify, request 
 from actions.post_document_action import PostDocumentAction
 from commands.post_document_command import PostDocumentCommand
 from commands.get_document_command import GetDocumentCommand
@@ -43,13 +42,12 @@ def post_document():
 
 @document_bp.route('/documents/<string:id>', methods=['GET'])
 def get_document(id):
-    command = GetDocumentCommand(id)
-    document = GetDocumentAction.execute(command)
-
-    if document:
+    try:
+        command = GetDocumentCommand(id)
+        document = GetDocumentAction.execute(command)
         return jsonify(document.to_dict()), 200
-    else:
-        return jsonify({'error': 'Document non trouvé'}), 404
+    except Exception :
+        return jsonify({'error': 'Document non trouvé'}), 400
     
 @document_bp.route('/documents/<string:document_id>', methods=['PATCH'])
 def patch_document(document_id):
@@ -65,3 +63,15 @@ def patch_document(document_id):
         return jsonify({'error': str(e)}), 400
     except Exception:
         return jsonify({'error': 'Document non trouvé'}), 404
+
+@document_bp.route('/documents/<string:document_id>', methods=['DELETE'])
+def delete_document(document_id):
+    from commands.delete_document_command import DeleteDocumentCommand
+    from actions.delete_document_action import DeleteDocumentAction
+    
+    try:
+        command = DeleteDocumentCommand(document_id=document_id)
+        DeleteDocumentAction.execute(command)
+        return jsonify({'message' : 'Document supprimé avec succès'}), 200
+    except ValueError as e:
+        return jsonify({'error': str(e)}), 404

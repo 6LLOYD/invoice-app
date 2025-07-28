@@ -11,7 +11,7 @@ class PostDocumentAction:
         if command.total_ht < 0:
             raise ValueError("Le total_ht ne peut pas être négatif")
 
-        # ✅ Vérification de la validité de l'enum
+        # Vérification de la validité de l'enum
         try:
             command.type_document = DocumentType[command.type_document.upper()]
         except (KeyError, AttributeError):

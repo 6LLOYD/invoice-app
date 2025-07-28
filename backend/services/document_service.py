@@ -43,3 +43,12 @@ class DocumentService:
 
         db.session.commit()
         return document
+    
+    @staticmethod
+    def delete_document(document_id: str):
+        document = Document.query.get(document_id)
+        if not document:
+            raise ValueError("Document introuvable")
+
+        db.session.delete(document)
+        db.session.commit()

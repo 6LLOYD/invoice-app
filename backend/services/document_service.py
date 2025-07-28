@@ -25,3 +25,7 @@ class DocumentService:
         db.session.add(document)
         db.session.commit()
         return document
+class DocumentService:
+    @staticmethod
+    def get_document(document_id):
+        return Document.query.get(document_id)

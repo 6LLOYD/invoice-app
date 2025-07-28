@@ -2,6 +2,8 @@
 from flask import Blueprint, jsonify, request # Make sure to import request as well
 from actions.post_document_action import PostDocumentAction
 from commands.post_document_command import PostDocumentCommand
+from commands.get_document_command import GetDocumentCommand
+from actions.get_document_action import GetDocumentAction
 
 # Create the Blueprint instance
 document_bp = Blueprint('documents', __name__)
@@ -37,3 +39,14 @@ def post_document():
         return jsonify(document.to_dict()), 201
     except ValueError as e:
         return jsonify({'error': str(e)}), 400
+
+
+@document_bp.route('/documents/<string:id>', methods=['GET'])
+def get_document(id):
+    command = GetDocumentCommand(id)
+    document = GetDocumentAction.execute(command)
+
+    if document:
+        return jsonify(document.to_dict()), 200
+    else:
+        return jsonify({'error': 'Document non trouvé'}), 404

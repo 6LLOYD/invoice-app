@@ -50,3 +50,18 @@ def get_document(id):
         return jsonify(document.to_dict()), 200
     else:
         return jsonify({'error': 'Document non trouvé'}), 404
+    
+@document_bp.route('/documents/<string:document_id>', methods=['PATCH'])
+def patch_document(document_id):
+    from commands.patch_document_command import PatchDocumentCommand
+    from actions.patch_document_action import PatchDocumentAction
+
+    data = request.get_json()
+    command = PatchDocumentCommand(document_id=document_id, fields_to_update=data)
+    try:
+        document = PatchDocumentAction.execute(command)
+        return jsonify(document.to_dict()), 200
+    except ValueError as e:
+        return jsonify({'error': str(e)}), 400
+    except Exception:
+        return jsonify({'error': 'Document non trouvé'}), 404

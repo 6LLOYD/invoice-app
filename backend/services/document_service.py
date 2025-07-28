@@ -25,7 +25,21 @@ class DocumentService:
         db.session.add(document)
         db.session.commit()
         return document
-class DocumentService:
+    
     @staticmethod
     def get_document(document_id):
         return Document.query.get(document_id)
+    
+    @staticmethod
+    def update_document(document_id, update_data):
+        document = Document.query.get(document_id)
+        if not document:
+            raise Exception("Document non trouvé")
+
+        # Exemple simple de mise à jour, tu peux adapter selon les champs autorisés
+        for key, value in update_data.items():
+            if hasattr(document, key):
+                setattr(document, key, value)
+
+        db.session.commit()
+        return document

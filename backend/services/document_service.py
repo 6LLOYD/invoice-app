@@ -7,10 +7,20 @@ class DocumentService:
         document = Document(
             numero=command.numero,
             date=command.date,
-            total=command.total,
+            total_ht=command.total_ht,
+            tva_taux=command.tva_taux,
+            tva_montant=command.tva_montant,
+            total_ttc=command.total_ttc,
             type_document=command.type_document,
             client_id=command.client_id,
-            profile_id=command.profile_id
+            profile_id=command.profile_id,
+            statut=command.statut,
+            adresse_chantier=command.adresse_chantier,
+            nom_client=command.nom_client,
+            email_client=command.email_client,
+            telephone_client=command.telephone_client,
+            adresse_client=command.adresse_client,
+            document_source_id=command.document_source_id
         )
         db.session.add(document)
         db.session.commit()

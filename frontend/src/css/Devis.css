@@ -1,0 +1,48 @@
+.devis-container {
+  padding: var(--text-gap);
+  color: var(--secondary-color-2);
+}
+
+.client-cards, .selected-items {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: var(--text-gap);
+}
+
+.client-card, .item-card {
+  padding: 1rem;
+  background-color: var(--primary-color-1);
+  border: 1px solid var(--primary-color-2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.client-card:hover, .item-card:hover {
+  background-color: var(--secondary-color-1);
+  transform: scale(1.05);
+}
+
+.client-card.selected {
+  background-color: var(--primary-color-2);
+  color: var(--secondary-color-2);
+}
+
+.date-input {
+  margin-bottom: var(--text-gap);
+  padding: 0.5rem;
+  border: 1px solid var(--primary-color-2);
+  border-radius: 4px;
+  background-color: var(--primary-color-1);
+  color: var(--secondary-color-2);
+}
+
+.drag-drop-area {
+  margin-bottom: var(--text-gap);
+  display: flex;
+  gap: 2rem;
+}
+
+.drag-drop-area h3 {
+  margin-bottom: 0.5rem;
+}

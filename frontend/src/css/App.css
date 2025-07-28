@@ -1,0 +1,105 @@
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+:root {
+  /* Polices élégantes */
+  --font-primary: "Georgia", "Times New Roman", serif; /* Police élégante et classique */
+  --font-secondary: "Lora", "Cambria", serif; /* Alternative douce et raffinée */
+  --line-height: 1.8; /* Espacement vertical entre les lignes */
+  --text-gap: 1.5rem; /* Espacement entre blocs de texte */
+  --word-spacing: 0.2rem; /* Espacement entre les mots pour un look aéré */
+
+  /* Palette de couleurs - Nuances de bleu */
+  --primary-color-1: #1e3a8a; /* Navy profond (couleur principale 1) */
+  --primary-color-2: #3b82f6; /* Bleu royal (couleur principale 2) */
+  --secondary-color-1: #93c5fd; /* Bleu clair (couleur secondaire 1) */
+  --secondary-color-2: #bfdbfe; /* Bleu très clair (couleur secondaire 2) */
+
+  /* Autres styles globaux */
+  font-family: var(--font-primary), system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  line-height: var(--line-height);
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Appliquer les espacements globalement */
+  word-spacing: var(--word-spacing);
+}
+
+body {
+  margin: 0;
+  padding: var(--text-gap);
+  background-color: var(--secondary-color-2);
+  color: var(--secondary-color-2);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--primary-color-2);
+  margin-bottom: var(--text-gap);
+}
+
+button {
+  background-color: var(--primary-color-2);
+  color: var(--secondary-color-1);
+  border: none;
+  padding: 0.5rem 1rem;
+}
+
+button:hover {
+  background-color: var(--primary-color-1);
+  color: var(--secondary-color-2);
+}
+
+.large-icon {
+  font-size: 3rem; /* Taille de base */
+  transition: font-size 0.3s ease, transform 0.3s ease, color 0.3s ease; /* Transition fluide */
+  /* color: var(--primary-color-2); Couleur de base (bleu royal) */
+}
+
+.large-icon:hover {
+  font-size: 4rem; /* Taille au hover */
+  transform: rotate(15deg) scale(1.1); /* Rotation légère et agrandissement */
+  color: var(--secondary-color-1); /* Changement vers un bleu clair */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombre douce pour un effet 3D */
+}
+
+.glass-navbar {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+
+  /* Nouveau : centrage et largeur réduite */
+  max-width: 500px;
+  margin: 1rem auto;
+}
+/* Conserver la navbar stable */
+.navbar-nav {
+  position: relative;
+  min-height: 60px; /* Hauteur minimale fixe pour éviter les sauts */
+}
+
+.nav-item {
+  display: inline-block;
+  margin: 0 10px; /* Espacement entre les icônes */
+  vertical-align: middle; /* Alignement vertical */
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 0; /* Supprime le padding par défaut pour un alignement précis */
+}
+/* curl -X POST http://127.0.0.1:5000/api/documents -H "Content-Type: application/json" -d "{\"numero\":\"F001\",\"date\":\"2025-07-24\",\"total\":3745.0,\"type_document\":\"Devis\",\"client_id\":\"b6785667-0b28-4c9b-92c5-6cdf2e01fd7f\"}" */

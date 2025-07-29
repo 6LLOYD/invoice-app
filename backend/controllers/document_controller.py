@@ -1,16 +1,16 @@
 from flask import Blueprint, jsonify, request 
-from actions.post_document_action import PostDocumentAction
-from commands.post_document_command import PostDocumentCommand
-from commands.get_document_command import GetDocumentCommand
-from actions.get_document_action import GetDocumentAction
+from actions.document.post_document_action import PostDocumentAction
+from commands.document.post_document_command import PostDocumentCommand
+from commands.document.get_document_command import GetDocumentCommand
+from actions.document.get_document_action import GetDocumentAction
 
 # Create the Blueprint instance
 document_bp = Blueprint('documents', __name__)
 
 @document_bp.route('/documents', methods=['POST'])
 def post_document():
-    from actions.post_document_action import PostDocumentAction
-    from commands.post_document_command import PostDocumentCommand
+    from actions.document.post_document_action import PostDocumentAction
+    from commands.document.post_document_command import PostDocumentCommand
 
     data = request.get_json()
 
@@ -51,8 +51,8 @@ def get_document(id):
     
 @document_bp.route('/documents/<string:document_id>', methods=['PATCH'])
 def patch_document(document_id):
-    from commands.patch_document_command import PatchDocumentCommand
-    from actions.patch_document_action import PatchDocumentAction
+    from commands.document.patch_document_command import PatchDocumentCommand
+    from actions.document.patch_document_action import PatchDocumentAction
 
     data = request.get_json()
     command = PatchDocumentCommand(document_id=document_id, fields_to_update=data)
@@ -66,8 +66,8 @@ def patch_document(document_id):
 
 @document_bp.route('/documents/<string:document_id>', methods=['DELETE'])
 def delete_document(document_id):
-    from commands.delete_document_command import DeleteDocumentCommand
-    from actions.delete_document_action import DeleteDocumentAction
+    from commands.document.delete_document_command import DeleteDocumentCommand
+    from actions.document.delete_document_action import DeleteDocumentAction
     
     try:
         command = DeleteDocumentCommand(document_id=document_id)

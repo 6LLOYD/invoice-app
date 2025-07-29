@@ -1,4 +1,4 @@
-from commands.post_document_command import PostDocumentCommand
+from commands.document.post_document_command import PostDocumentCommand
 from services.document_service import DocumentService
 from models.document_type import DocumentType  # ← Import l'enum
 

@@ -8,3 +8,13 @@ class Client(db.Model):
     email = db.Column(db.String(120), nullable=True)
     telephone = db.Column(db.String(20), nullable=True)
     adresse_id = db.Column(db.String(36), db.ForeignKey('adresse.id'), nullable=True)
+    
+    def to_dict(self):
+        return{
+            'id' : self.id,
+            'nom' : self.nom,
+            'prenom' : self.prenom,
+            'email' : self.email,
+            'telephone' : self.telephone,
+            'adresse_id' : self.adresse_id
+        }

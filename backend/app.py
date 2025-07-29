@@ -1,5 +1,6 @@
 from config import create_app, db
 from controllers.document_controller import document_bp
+from controllers.client_controller import client_bp
 
 app = create_app()
 
@@ -12,6 +13,7 @@ from models.profile import Profile
 from models.service import Service
 
 app.register_blueprint(document_bp, url_prefix='/api')
+app.register_blueprint(client_bp, url_prefix='/api')
 
 if __name__ == '__main__':
     # with app.app_context():

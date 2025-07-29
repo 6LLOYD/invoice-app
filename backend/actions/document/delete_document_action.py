@@ -1,4 +1,4 @@
-from commands.delete_document_command import DeleteDocumentCommand
+from commands.document.delete_document_command import DeleteDocumentCommand
 from services.document_service import DocumentService
 
 class DeleteDocumentAction:

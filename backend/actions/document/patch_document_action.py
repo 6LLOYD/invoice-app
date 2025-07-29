@@ -1,4 +1,4 @@
-from commands.patch_document_command import PatchDocumentCommand
+from commands.document.patch_document_command import PatchDocumentCommand
 from services.document_service import DocumentService
 
 class PatchDocumentAction:
